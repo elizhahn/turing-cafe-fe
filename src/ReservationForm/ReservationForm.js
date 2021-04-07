@@ -35,13 +35,14 @@ class ReservationForm extends Component {
 
   render() {
     return (
-      <form className="form-container" onSubmit={this.onSubmit}>
+      <form className="form-container" onSubmit={this.onSubmit} data-test="reservation-form">
         <input
         className="form-input"
         placeholder="Name"
         value={this.state.name}
         name="name"
         onChange={this.handleChange}
+        data-test="reservation-input-name"
         />
          <input
         className="form-input"
@@ -49,6 +50,7 @@ class ReservationForm extends Component {
         value={this.state.date}
         name="date"
         onChange={this.handleChange}
+        data-test="reservation-input-date"
         />
           <input
         className="form-input"
@@ -56,6 +58,7 @@ class ReservationForm extends Component {
         value={this.state.time}
         name="time"
         onChange={this.handleChange}
+        data-test="reservation-input-time"
         />
           <input
         className="form-input"
@@ -63,9 +66,10 @@ class ReservationForm extends Component {
         value={this.state.number}
         name="number"
         onChange={this.handleChange}
+        data-test="reservation-input-number"
         />
         <div>
-          <button className="form-btn" type="submit">Make Reservation</button>
+          <button className="form-btn" type="submit" data-test="form-btn">Make Reservation</button>
         </div>
       </form>
     )
