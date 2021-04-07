@@ -8,20 +8,34 @@ class App extends Component {
     super()
     this.state= {
       reservations: [],
+      error: "",
     }
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
+    console.log("test")
     fetch("http://localhost:3001/api/v1/reservations")
-    .then(response => response.json())
+    .then(response =>  response.json())
     .then(data => {
-      this.setState({ reservations: data })
+      this.setState({ reservations: [...this.state.reservations, ...data] })
     })
     .then(error => console.log(error))
   }
 
   addReservation = (newRes) => {
-    this.setState({ reservations: [...this.state.reservations, newRes]})
+    fetch("http://localhost:3001/api/v1/reservations", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json", 
+      },
+      body: JSON.stringify(newRes),
+    })
+    .then(response => response.json())
+    .then(data => {
+      this.setState({ reservations: [...this.state.reservations, data]})
+    })
+    .catch(error => console.log(error))
+
   }
 
   render() {

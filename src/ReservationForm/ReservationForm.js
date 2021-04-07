@@ -25,6 +25,7 @@ class ReservationForm extends Component {
     event.preventDefault();
     const number = Number(this.state.number)
     const newRes = {
+     id: Date.now(),
      name: this.state.name,
      date: this.state.date,
      time: this.state.time, 
