@@ -1,9 +1,20 @@
 import React from "react";
+import ReservationCard from "../ReservationCard/ReservationCard";
 
-const Reservations = (props) => {
+const Reservations = ({ reservations }) => {
+  const reservationList = reservations.map(reservation => {
+    return <ReservationCard
+            key={reservation.id}
+            id={reservation.id}
+            name={reservation.name}
+            date={reservation.date}
+            time={reservation.time}
+            number={reservation.number}
+           />
+  })
   return (
     <section>
-      <p>reservations will go here</p>
+      {reservationList}
     </section>
   )
 }
