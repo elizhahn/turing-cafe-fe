@@ -11,7 +11,19 @@ class ReservationForm extends Component {
       number: "",
     }
   }
+
+  handleChange = (event) => {
+   const { name, value } = event.target
+   this.setState({ [name]: value })
+  }
+
+  onSubmit = (event) => {
+    event.preventDefault();
+    //method here passed from app which will update reservations there
+  }
+
   render() {
+    console.log(this.state)
     return (
       <form onSubmit={this.onSubmit}>
         <input
