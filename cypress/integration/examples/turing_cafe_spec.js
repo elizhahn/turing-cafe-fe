@@ -9,4 +9,17 @@ describe("Turing Cafe", () => {
     cy.get("[data-test=reservation-card]").first().contains("Christie")
     cy.get("[data-test=reservation-card]").eq(1).contains("Leta")
   })
+
+  it("Should allow a user to type into the reservation form", () => {
+    cy.intercept("http://localhost:3001/api/v1/reservations", {fixture: "reservations.json"})
+    cy.visit("http://localhost:3000/")
+    cy.get("[data-test=reservation-input-name]").type("Elizabeth")
+    cy.get("[data-test=reservation-input-name]").should("have.value", "Elizabeth")
+    cy.get("[data-test=reservation-input-date]").type("09/21")
+    cy.get("[data-test=reservation-input-date]").should("have.value", "09/21")
+    cy.get("[data-test=reservation-input-time]").type("5:00")
+    cy.get("[data-test=reservation-input-time]").should("have.value", "5:00")
+    cy.get("[data-test=reservation-input-number]").type("3")
+    cy.get("[data-test=reservation-input-number]").should("have.value", "3")
+  })
 })
