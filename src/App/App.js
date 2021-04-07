@@ -23,6 +23,7 @@ class App extends Component {
   }
 
   addReservation = (newRes) => {
+    
     fetch("http://localhost:3001/api/v1/reservations", {
       method: "POST",
       headers: {
@@ -35,11 +36,10 @@ class App extends Component {
       this.setState({ reservations: [...this.state.reservations, data]})
     })
     .catch(error => console.log(error))
-
+ 
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>

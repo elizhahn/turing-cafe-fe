@@ -24,6 +24,23 @@ describe("Turing Cafe", () => {
   })
 
   it("Should add a new reservation to the list", () => {
+    //was working on getting this testing to work
+    // cy.intercept(
+    //   {
+    //     method: "POST",
+    //     url: "http://localhost:3001/api/v1/reservations"
+    //   },
+    //   {
+    //     statusCode: 201,
+    //     body: {
+    //       id: 1617817677795, 
+    //       name: "Elizabeth", 
+    //       date: "08/23", 
+    //       time: "6:00", 
+    //       number: 2
+    //    }
+    //   })
+    // .wait(2000)
     cy.get("[data-test=reservation-input-name]").type("Elizabeth")
     cy.get("[data-test=reservation-input-date]").type("09/21")
     cy.get("[data-test=reservation-input-time]").type("5:00")
