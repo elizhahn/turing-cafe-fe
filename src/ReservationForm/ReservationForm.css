@@ -1,0 +1,18 @@
+.form-container {
+  display: flex;
+  justify-content: space-evenly; 
+  align-items: center;  
+}
+
+.form-input {
+  margin: 20px; 
+  height: 30px;
+  width: 200px;   
+}
+
+.form-btn {
+  background-color: teal;
+  color: rgb(255, 255, 255); 
+  padding: 10px;
+  font-weight: 600;  
+}
