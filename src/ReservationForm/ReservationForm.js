@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./ReservationForm.css";
 
 class ReservationForm extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state={
       name: "",
       date: "",
@@ -17,13 +17,23 @@ class ReservationForm extends Component {
    this.setState({ [name]: value })
   }
 
+  // formatReservation = () => {
+  //   const number = Number(this.state.number)
+  // }
+
   onSubmit = (event) => {
     event.preventDefault();
-    //method here passed from app which will update reservations there
+    const number = Number(this.state.number)
+    const newRes = {
+     name: this.state.name,
+     date: this.state.date,
+     time: this.state.time, 
+     number: number,
+    }
+    this.props.addReservation(newRes)
   }
 
   render() {
-    console.log(this.state)
     return (
       <form onSubmit={this.onSubmit}>
         <input
