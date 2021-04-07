@@ -1,6 +1,6 @@
 import React from "react";
 
-const Reservations = () => {
+const Reservations = (props) => {
   return (
     <section>
       <p>reservations will go here</p>
