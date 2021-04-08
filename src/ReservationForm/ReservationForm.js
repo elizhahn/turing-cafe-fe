@@ -32,6 +32,7 @@ class ReservationForm extends Component {
      number: number,
     }
     this.props.addReservation(newRes)
+    this.setState({name: "", date: "", time: "", number: ""})
   }
 
   render() {

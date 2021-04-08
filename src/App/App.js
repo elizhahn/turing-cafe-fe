@@ -13,13 +13,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log("test")
     fetch("http://localhost:3001/api/v1/reservations")
-    .then(response =>  response.json())
+    .then(response =>  {
+      if(response.ok) {
+        return response.json()
+      } 
+        throw new Error ("Something went wrong")
+    })
     .then(data => {
       this.setState({ reservations: [...this.state.reservations, ...data] })
     })
-    .then(error => console.log(error))
+    .catch(error => {
+      this.setState({error: "Something went wrong"})
+    })
   }
 
   addReservation = (newRes) => {
@@ -39,6 +45,17 @@ class App extends Component {
  
   }
 
+  cancelReservation = (id) => {
+    fetch(`http://localhost:3001/api/v1/reservations/${id}`, {
+      method: "DELETE", 
+    })
+    .then(response => response.json())
+    .then(data => {
+      this.setState({reservations: [...data]})
+    })
+    .catch(error => console.log(error))
+  }
+
   render() {
     return (
       <div className="App">
@@ -47,7 +64,7 @@ class App extends Component {
           <ReservationForm addReservation = {this.addReservation}/>
         </div>
         <div className='resy-container'>
-          <Reservations reservations={this.state.reservations}/>
+          <Reservations reservations={this.state.reservations} cancelReservation={this.cancelReservation}/>
         </div>
       </div>
     )

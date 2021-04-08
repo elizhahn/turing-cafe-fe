@@ -8,6 +8,7 @@ const ReservationCard = (props) => {
       <p>{props.date}</p>
       <p>{props.time}pm</p>
       <p>number of Guests: {props.number}</p>
+      <button onClick={() => props.cancelReservation(props.id)} data-test="cancel-btn"> Cancel Reservation</button>
     </article>
   )
 }
